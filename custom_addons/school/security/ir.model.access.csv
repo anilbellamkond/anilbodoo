@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access.school.module,access_school_module,school.model_school_module,base.group_user,1,1,1,1
+access.student.model,access_student_model,school.model_student_model,base.group_user,1,1,1,1
+access.staff.module,access_staff_module,school.model_staff_module,base.group_user,1,1,1,1
+access.class.module,access_class_module,school.model_class_module,base.group_user,1,1,1,1
+access.subjects.module,access_subjects_module,school.model_subjects_module,base.group_user,1,1,1,1
+access.exams.module,access_exams_module,school.model_exams_module,base.group_user,1,1,1,1
+access.exam.type,access_exam_type,school.model_exam_type,base.group_user,1,1,1,1
+

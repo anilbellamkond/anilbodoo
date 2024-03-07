@@ -1,0 +1,34 @@
+context is versatile tool in odoo , it helps to pass data from one view to different one and manymore
+
+default data of the context = { "active_id" : 3, "active_model" : "sale.order", 'lang': "en_us" ,"company_id":1, "allowed_company_ids":[1,2,3] }
+
+operations can be done by context
+
+set default values
+set default groups / group by
+set default filters
+pass different values
+handle different values
+different behaviour of button
+override context
+
+
+active_id = the context key is used store the id of the  id of the active record which is the user currently viewing or editing
+
+active_ids = it store the id of the list view when we select multiple records doing such a operation then this active_ids come in to main
+
+default*
+search_default_*
+
+
+set default values using context
+
+
+<field name="context"> { "default_name":'anil','search_default_groupby':1 }</field>
+
+<field name="school_id" context = "{'active_test':False}" /> now its come in search view
+
+
+context  = {'tree_view_ref':"new_tree_view_id" , "form_view_ref":"new_form_view_id"} this you keep in the many2many field
+
+context = "{'show_address':1} options="{'always_reload':True}"

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <menuitem
+    id="menu_channel_partner"
+    name="Channel Partner"
+    sequence="0"
+/>
+
+
+
+        <record id = "view_channel_partner_tree" model = "ir.ui.view">
+        <field name="name">channel.partner.tree</field>
+            <field name="model">channel.partner</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="c_partner_id" />
+                       <field name="first_name" placeholder="First Name" required="1"/>
+
+                            <field name="email" widget="email" required="1"/>
+
+                            <field name="mobile_number" widget="phone mask_digits" required="1" readonly="1" />
+                             <field name="communication_address" widget="text" required="1"/>
+                             <field name="region_of_operation"/>
+                </tree>
+            </field>
+    </record>
+
+
+
+
+         <record id="view_channel_partner_form" model="ir.ui.view">
+        <field name="name">channel.partner.form</field>
+        <field name="model">channel.partner</field>
+        <field name="arch" type="xml">
+            <form string="Channel Partner">
+
+                <sheet>
+                    <div class="oe_button_box" name="button_box" position="inside">
+                    <button class="oe_stat_button" name="get_leads" type="object"
+                        icon="fa-star">
+                        <div class="o_stat_info">
+                        <field   name="no_of_leads" widget="statinfo"   />
+                        <span class="o_stat_value">Leads</span>
+                        </div>
+                    </button>
+                        </div>
+                    <!-- Personal Information -->
+                    <group>
+
+                        <group>
+                            <field name="first_name" placeholder="First Name" required="1"/>
+
+                            <field name="email" widget="email" required="1"/>
+
+                            <field name="mobile_number" widget="phone mask_digits" readonly="1" required="1"/>
+                             <field name="communication_address" widget="text" required="1"/>
+                             <field name="region_of_operation"/>
+
+                        </group>
+                        <group>
+                            <field name="last_name" required="1"/>
+                            <field name="pan" required="1" />
+                            <field name="landline_number" widget="phone"/>
+                            <field name="professional_relationship_details" placeholder="Name of top 5 other organistaions you working with" widget="text"/>
+
+
+                        </group>
+                    </group>
+
+                    <!-- Company Information -->
+
+                    <group>
+
+
+                         <group>
+                             <div>
+                                 <h3>Company Details - if Applicable</h3>
+                            </div>
+                            <field name="company_name"/>
+                            <field name="pan_card_number"/>
+
+                            <field name="registered_address" widget="text"/>
+
+
+
+                            <field name="gst_number" required="1"/>
+
+                        </group>
+
+
+
+
+                    <group>
+
+                       <div>
+                           <h3>Member of any Association</h3>
+
+                        <div class="d-flex flex-row ">
+                        <field name="credai" id="credai" widget="checkbox"/>
+                             <label for="credai"  >CREDAI</label>
+                        <field name="rera" id="rera" widget="boolean"/>
+                             <label for="rera" >RERA</label>
+
+                        <field name="other" id="other" widget="boolean"/>
+                             <label for="other" >Other</label>
+                        </div>
+
+                        </div>
+                         <field name="website_url" widget="url"/>
+                        <field name="rera_registration"  required="1"/>
+                         <field name="scanned_cheque_file"  strind="Scanned Cancelled Cheque" filename="file_name" required="1" />
+                        <field name="file_name" invisible="1"/>
+                         <field name="pan_scan_file"  required="1" filename="file_name"/>
+                        <field name="file_name" invisible="1"/>
+
+                    </group>
+
+
+
+
+                    </group>
+
+
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+<record model="ir.actions.act_window" id="action_channel_partner">
+        <field name="name">Channel Partner</field>
+        <field name="res_model">channel.partner</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create Your account</p>
+        </field>
+    </record>
+
+
+<record id="view_channel_partner_search" model="ir.ui.view">
+        <field name="name">view.channel.partner.search</field>
+        <field name="model">channel.partner</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="c_partner_id" string="channel partner id" />
+
+            </search>
+
+        </field>
+    </record>
+
+
+
+
+<menuitem
+    id="menu_channel_partner_form"
+    name="Fill Form"
+    parent="menu_channel_partner"
+    action="action_channel_partner"
+    sequence="1"
+
+/>
+
+
+
+
+
+
+    </data>
+
+</odoo>

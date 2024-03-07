@@ -1,0 +1,188 @@
+<template id = “school_student_card_report_temp”>
+
+<t t-call = “web.html_container”>
+<t t-for-each=”docs” t-as=”doc”>
+
+<t t-call = “web.external_layout”>
+
+<t t-field = “doc.name”/> we can also use this operation t-esc and t-field main difference is when set a variable in the template it cant be acces by t-field
+
+<t t-set=”a” t-value = “1234567890”/>
+<t t-esc = “a”/> it will print the a value
+<t t-field = “a”/> it will throw the error
+
+<t t-esc = “doc.name”/>
+<t t-out = “doc.name”/>  t-out and t-esc are same but in odoo 14 below used t-esc and 15 above used t-out thats it
+
+
+<h1 t-field = “doc.name”/>
+<h2 t-field = “doc.name”/>
+<h3 t-field = “doc.name”/>
+
+<span t-field = “doc.name”/>
+
+
+# conditional statements
+
+<t t-if = “doc.name == ‘anil’” >
+<p> this is <span t-esc=”doc.name”/> </p>
+
+</t>
+<t t-elif = “doc.name == ‘anil’” >
+<p> this is <span t-esc=”doc.name”/> </p>
+
+</t>
+
+<t t-else=” “>
+           <p> this is not anil <span t-field = “doc.name”/>  </p>
+</t>
+
+
+short cut way to write conditional statements
+
+<p t-if = “doc.name == ‘anil’”> this is <span t-esc=”doc.name”/> </p>
+<p t-elif = “doc.name == ‘anil’”> this is <span t-esc=”doc.name”/> </p>
+<p t-else=” “> this is not anil <span t-field = “doc.name”/>  </p>
+
+
+
+
+
+
+# looping statements
+
+
+<t t-foreach = “[1,2,3,4,5,6,7,8,9]” t-as=”anil”>
+<h1 t-esc=”anil” />
+sequence of foreach loop : - <span  t-esc = “anil_index” />
+Is this first Index ? <span t-esc = “anil_first” />
+Is this LastIndex ? <span t-esc = “anil_last” />
+
+<p  t-esc = “anil_value” />
+<p  t-esc = “anil_parity” /> find the odd and even
+
+<p t-esc=”anil_even” />
+<p t-esc = “anil_odd” />
+
+</t>
+
+
+# variable declaration in qweb report
+
+
+<t t-set=”a” t-value =”234” />
+
+   <h1 t-out = “a” />
+
+<t t-set = “a” t-value = “’web lear’” />
+<h1 t-out = “a” />
+
+<t t-set = “a” t-value = “doc.name” /> store the name value in a
+<h1 t-out = “a” />
+
+
+<t t-set = “a” t-value = “0” /> a value increasing for each loop
+<t t-foreach = “[1,2,3,4,5,6,7,8,9]” t-as=”anil”>
+
+<t t-set = “a” t-value = “a +1 “ />
+
+</t>
+
+<t t-esc = “a” />
+
+
+<t t-call=”module_name.sub_template/>
+
+
+
+
+
+</t>
+</t>
+</t>
+
+
+
+</template>
+
+
+
+
+
+<template  id =”sub template”>
+<t t-call=”web.external_layout” >
+<div class= “page”>
+
+<h1> Now you are calling sub template </p>
+
+
+<t t-att-href = “doc.school.email” /> dynamically attribute setting
+
+<p t-att=”[‘style’,’background-color:red;’]”>
+Anil Bellamkonda
+</p>
+
+<p t-attf-style = “background-color : #{doc.roll_number}”; >
+       hi this is anil
+</p>
+
+
+<p t-attf-style = “background-color : {{doc.roll_number if doc.roll_number else ‘red’}}”; >
+       hi this is anil
+</p>
+
+
+</div>
+
+</t>
+</template>
+
+
+<template inherit_id = “module.sub_template” id = “sub_template_new”>
+
+<xpath expr= “//div[hasclass(‘page’)]” position= “replace”>
+    <div class=”page”>
+               <h1>I AM EXTENDING MY EXISTING TEMPLATE</h1>
+</div>
+
+ <img src = "/report/barcode/QR/hello world" alt= "barcode" width="80" height="80"/>  ### barcode generator
+
+ <img t-att-src = "'/report/barcode/QR/%s'%(student.name)" alt= "barcode" width="80" height="80"/>  ### barcode generator
+
+<img t-att-src = "image_data_uri(doc.image)" alt= "barcode" width="80" height="80"/>  ### barcode generator
+
+</xpath>
+
+
+
+
+</template>
+
+/// paper format
+
+<record id = “student_paper_new_format”  model=”report.paperformat”>
+<field name=”name”>student custom paper format</field>
+<field name=”format”>A4 </field>
+<field name=”orientation”>Landscape</field>
+<field name=”page_height”>0</field>
+<field name=”page_width”>0</field>
+<field name=”head_spacing”>35</field>
+<field name=”dpi”>90</field>
+
+</record>
+
+
+<record id = “student_report_profile_template”  model=”ir.actions.report”>
+<field name=”name”>student card report </field>
+<field name=”model”>student.data </field>
+<field name=”report_type”>qweb-pdf</field>
+<field name=”report_name”>module_name.school_student_card_report_temp</field>
+<field name=”report_file”>module_name.school_student_card_report_temp</field>
+
+<field name=”print_report_name”> student report card </field>
+<field name=”binding_model_id” ref=”module.model_name”>
+<field name=”binding_type”>report </field>
+
+<field name="paper_format_id" ref = "module_name.student_paper_new_format" />
+
+</record>

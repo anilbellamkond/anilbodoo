@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- channel_partner_template.xml -->
+<odoo>
+
+    <template id="channel_partner_template" name="Channel Partner Form">
+       <style>
+
+             /* Navbar styles */
+            .navbar {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background-color: black;
+                padding: 10px;
+            }
+
+            /* Left and right menu styles */
+            .navbar-left, .navbar-right {
+                display: flex;
+                align-items: center;
+            }
+
+            .navbar-left img {
+                min-width: 150px;
+                max-width:200px;
+
+                height: auto;
+
+            }
+
+
+            .navbar-right img {
+                 min-width: 150px;
+                max-width:200px;
+                height: auto;
+                background-color:white;
+            }
+
+            /* Center options styles */
+            .navbar-center {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex: 1; /* Takes the remaining space in the center */
+            }
+
+            /* Menu items styles */
+            .navbar-item {
+                color: white;
+                margin: 0 10px;
+                text-decoration: none;
+            }
+
+
+
+  /* Common styles for all views */
+           .channel-partner-form {
+               font-family: 'Arial', sans-serif;
+
+               margin: 0;
+               padding: 0;
+
+               background-image: url('https://urbanblocks.net/wp-content/uploads/2024/02/beautiful-view-construction-site-city-during-sunset-compressed.webp');
+                background-size:cover;
+              height:auto;
+
+
+           }
+             header {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1#registration-heading {
+            background-color: black;
+            padding: 10px;
+            text-align: center;
+           color:white;
+        }
+           header {
+               background-color: black;
+               color: white;
+               text-align: center;
+               padding: 20px;
+           }
+           section {
+               max-width: 800px;
+               margin: 20px auto;
+               background-color: white;
+               padding: 20px;
+
+               box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #f0f0f0;
+           }
+
+           button {
+               background-color: green;
+               color: white;
+               padding: 10px;
+               border: none;
+               border-radius: 4px;
+               cursor: pointer;
+           }
+
+           /* Laptop view */
+           @media (min-width: 992px) {
+               .group {
+                   display: flex;
+                   flex-direction: row;
+               }
+               .group1, .group2 {
+                   width: 50%;
+               }
+               .checks {
+                   display: flex;
+                   align-items: justify-content-center;
+               }
+           }
+
+           /* Tablet view */
+           @media (max-width: 991px) and (min-width: 768px) {
+               .group {
+                   flex-direction: column;
+               }
+               .group1, .group2 {
+                   width: 100%;
+               }
+           }
+
+           /* Mobile view */
+           @media (max-width: 767px) {
+               .group1, .group2 {
+                   width: 100%;
+               }
+           }
+           .checks {
+    display: flex;
+    align-items: center;
+}
+
+
+
+
+.checks input[type="checkbox"] {
+    margin-right: 1px;  /* Adjust as needed for spacing */
+}
+           .btn {
+
+           display:flex;
+           flex-direction:column;
+
+           align-items:center
+
+           }
+  #professional_relationship_details {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            height: 110px; /* Adjust the height as needed */
+        }
+    .terms {
+           display:flex;
+          justify-content:center;
+
+           padding:0px;
+
+           }
+           input#agree_terms {
+           margin:0px;
+           height:15px;
+           padding:0px;
+            box-sizing: content-box;
+           width:30px;
+
+           }
+
+           input#creda {
+           margin:0px;
+
+           padding:0px;
+            box-sizing: content-box;
+           width:30px;
+
+           }
+
+            input#rera {
+           margin:0px;
+
+           padding:0px;
+            box-sizing: content-box;
+           width:30px;
+
+           }
+
+            input#other {
+           margin:0px;
+
+           padding:0px;
+            box-sizing: content-box;
+           width:30px;
+
+           }
+
+
+        button {
+
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px; /* Add margin to separate button from form fields if needed */
+        }
+
+           .slide-in {
+        animation: slideInFromTop 0.5s ease;
+    }
+
+    /* Keyframes for the slide in animation */
+    @keyframes slideInFromTop {
+        0% {
+            transform: translateY(-100%);
+        }
+        100% {
+            transform: translateY(0);
+        }
+    }
+
+           a {
+           font-weight:bold;
+
+           }
+          ol {
+           font-size:12px;
+           }
+               input, textarea {
+               width: calc(100% - 20px);
+               padding: 10px;
+               margin-top: 6px;
+               margin-bottom: 16px;
+               box-sizing: border-box;
+               border: 1px solid #ccc;
+               font-size:14px;
+
+               font-weight:bold;
+               color:#000000;
+            background-color:white;
+
+           }
+            </style>
+       <div class="channel-partner-form">
+
+           <div class="navbar">
+            <div class="navbar-left">
+                 <img src="https://urbanblocks.net/wp-content/uploads/2024/02/WhatsApp_Image_2024-02-04_at_13.00.31-removebg-preview.webp" alt="Image 1"/>
+
+            </div>
+            <div class="navbar-center">
+                <a class="navbar-item" href="https://urbanblocks.net/">Home</a>
+                <a class="navbar-item" href="https://urbanblocks.net/about/">About</a>
+                <a class="navbar-item" href="https://urbanblocks.net/projects/">Project</a>
+                <a class="navbar-item" href="https://urbanblocks.net/nri-corner/">Nri Corner</a>
+                <a class="navbar-item" href="https://urbanblocks.net/contact/">Contact</a>
+
+
+            </div>
+            <div class="navbar-right">
+                 <img src="https://urbanblocks.net/wp-content/uploads/2024/02/credai_loog-1024x307-1.webp" alt="Image 2"/>
+
+            </div>
+        </div>
+
+
+          <section class="slide-in">
+
+              <h1 id="registration-heading">Channel Partner Registration</h1>
+              <form method="post" action="/submit_form" enctype="multipart/form-data" >
+                  <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+
+              <div class="group">
+        <div class="group1">
+         <input type="text" id="first_name" name="first_name" placeholder="First Name*"  required="1"/>
+
+
+
+
+
+
+        <input type="text" id="email" name="email"  placeholder="Email*" required="1" />
+
+
+
+
+
+        <input type="text" id="mobile_number" name="mobile_number" placeholder="Mobile Number*" required="1" />
+
+
+
+        <textarea id="communication_address" name="communication_address" placeholder="Communication Address*" required="1" ></textarea>
+
+
+
+
+        <input type="text" id="region_of_operation" name="region_of_operation" placeholder="Region of Operation in India" />
+
+
+            <h4>Company Details - if Applicable</h4>
+        <input type="text" id="company_name" name="company_name" placeholder="Company Name" />
+
+
+        <input type="text" id="pan_card_number" name="pan_card_number" placeholder="Pan Card Number"/>
+
+
+
+
+        <textarea id="registered_address" name="registered_address" placeholder="Registered Address"></textarea>
+
+              <input type="text" id="gst_number" name="gst_number" placeholder="GST No" />
+     </div>
+
+              <div class="group2">
+
+                  <input type="text" id="last_name" name="last_name" placeholder="Last Name*" required="1" />
+
+                  <input type="text" id="pan" name="pan" placeholder="Personal Account Number(PAN)*" required="1" />
+
+                <input type="text" id="mobile_number" name="landline_number" placeholder="Landline Number" />
+
+                  <textarea id="professional_relationship_details"  name="professional_relationship_details" placeholder="Professional Relationship Details (Name Top 5 other organisation you working with)" ></textarea>
+
+
+
+                  <h4>Member of any Association</h4>
+
+                  <div class="checks">
+
+
+                 <input type="checkbox" id="creda" name="creda"/>
+                       <label for="creda">CREDAI</label>
+
+
+
+        <input type="checkbox" id="rera" name="rera"/>
+ <label for="rera">RERA</label>
+
+        <input type="checkbox" id="other" name="other"/>
+
+<label for="other">OTHER</label>
+
+
+                  </div>
+
+<input type="text" id="website_url" name="website_url" placeholder="Website URL"/>
+
+
+
+
+
+        <input type="text" id="rera_registration" name="rera_registration" placeholder="Rera Registration Number*" required="1" />
+
+
+                  <label for="scanned_cheque_file">Scanned Cancelled Cheque*</label>
+        <input type="file" id="scanned_cheque_file" name="scanned_cheque_file" />
+
+
+                    <label for="pan_scan_file">Pan Scan*</label>
+                  <input type="file" id="pan_scan_file" name="pan_scan_file" multiple="true" accept="image/*,application/pdf,video/*" />
+
+
+
+              </div>
+
+              </div>
+
+
+                   <div class="terms">
+
+                     <input type="checkbox" id="agree_terms" name="agree_terms" required="1"/>
+                      <label  for="agree_terms">I Agree to the Terms and Conditions furnished below</label >
+
+                     </div>
+
+
+
+                  <div class="btn">
+
+
+    <button type="submit">Submit</button>
+
+
+
+                  </div>
+                  <div class="terms-and-conditions">
+  <h2 style="text-align:center">Terms and Conditions</h2>
+  <ol>
+    <li>Have a registered office address.</li>
+    <li>Provide PAN card details, and service tax will be provided at the time of on-boarding with the company.</li>
+    <li>Mention "realty" name during any communication with their prospective customers.</li>
+    <li>Significantly influence the closing of a sale as evidenced by accompanying the prospective customer to the project site, introducing the prospective customer to the sales team member/relationship manager and bringing the prospective customer to the Urbanblocks Realty Group Corporate Office for booking the unit.</li>
+    <li>Communicate project-related details to the prospective customer as provided/approved by the Urbanblocks Realty Group, for instance with respect to payment time-lines, project completion dates, project details.</li>
+    <li>Not misuse the Urbanblocks Realty Group brand name for personal benefit.</li>
+    <li>Abide by the Urbanblocks Realty Group brand guidelines on advertising materials and clearly mention own company name and contact details on all marketing collaterals developed and/or used post taking necessary approval from the management of Urbanblocks Realty Group.</li>
+    <li>Not indulge in sharing of channel partner fee with customers/Urbanblocks Realty Group personnel nor attract prospective customers through sharing of fee or similar offers.</li>
+    <li>Not unnecessarily interfere with the day-to-day functioning at project sites, Marketing and Sales offices, Corporate office.</li>
+    <li>Obtain registration under RERA Act and provide the RERA registration number.</li>
+  </ol>
+
+</div>
+
+</form>
+    </section>
+</div>
+
+
+
+    </template>
+
+
+
+
+    <!-- thank_you_template.xml -->
+<template id="thank_you_template" name="Thank You Page">
+      <style>
+
+.thank-you-page {
+    text-align: center;
+    margin-top: 50px;
+}
+
+      </style>
+        <div class="thank-you-page">
+            <h1 style="color: green;">Your Registration Successfully Completed</h1>
+
+
+                 <button onclick="redirectToAnotherPage()">Exit</button>
+            <script>
+        function redirectToAnotherPage() {
+            // Change the URL to the desired destination
+            window.location.href = 'https://urbanblocks.net/';
+        }
+    </script>
+        </div>
+
+
+</template>
+
+
+    <template id="pan_error_template" name="Thank You Page">
+      <style>
+
+.thank-you-page {
+    text-align: center;
+    margin-top: 50px;
+}
+
+      </style>
+        <div class="thank-you-page">
+            <h1 style="color:red;">Channel Partner Already exists with above details</h1>
+
+
+                 <button onclick="redirectToAnotherPage()">Exit</button>
+            <script>
+        function redirectToAnotherPage() {
+            // Change the URL to the desired destination
+            window.location.href = 'https://urbanblocks.net/';
+        }
+    </script>
+        </div>
+
+
+</template>
+
+
+
+
+
+
+
+</odoo>

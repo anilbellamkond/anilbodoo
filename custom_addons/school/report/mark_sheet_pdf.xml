@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="action_report_exam_mark_sheet" model="ir.actions.report">
+        <field name="name">Exam Mark Sheet</field>
+        <field name="model">exams.module</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">school.report_exam_mark_sheet</field>
+        <field name="report_file">school.report_exam_mark_sheet</field>
+    </record>
+
+
+   <template id="report_exam_mark_sheet">
+    <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="o">
+            <t t-call="web.basic_layout">
+<!--                <div class="page">-->
+<!--                    &lt;!&ndash; Header Section &ndash;&gt;-->
+<!--                    <div style="text-align: center; background-color: #3498db; color: #ffffff; padding: 10px;">-->
+<!--                        <h2><span t-field="o.type"/></h2>-->
+<!--                    </div>-->
+
+<!--                    &lt;!&ndash; Student Information Section &ndash;&gt;-->
+<!--                    <div style="margin-top: 20px;">-->
+<!--                        <p style="font-weight: bold;">Name: <span t-field="o.stu.name"/></p>-->
+<!--                        <p style="font-weight: bold;">Class: <span t-field="o.stu.class_name"/></p>-->
+<!--                    </div>-->
+
+                    <!-- Marks Table Section -->
+                <div>
+                    <style>
+        table {
+             background-color:lightblue;
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid black;
+        }
+
+        th, td {
+            border: 2px solid black;
+            padding: 4px;
+            text-align: center;
+             height:8px;
+                        vertical-align: middle;
+        }
+    </style>
+
+                   <table>
+                       <thead>
+                           <tr>
+                               <td colspan="2">Plan CLP</td>
+                               <td colspan="2">General Cost</td>
+                               <td rowspan="2" colspan="2">
+                                   <img alt="Odoo"
+                        src="/web/static/img/odoo_logo_tiny.png"
+                        style=" vertical-align: baseline; "/>
+                               </td>
+
+                           </tr>
+                           <tr>
+                               <td colspan="2">Base Price</td>
+                                <td colspan="2">9756</td>
+
+                           </tr>
+                           <tr  style="background-color:#808472;">
+                               <td colspan="2" rowspan="2">Type of Flat</td>
+                               <td colspan="2">West Facing</td>
+                               <td colspan="2">East Facing</td>
+                           </tr>
+                           <tr style="background-color:#808472;">
+                               <td>
+                                   2BHK
+                               </td>
+                               <td>
+                                   4BHK
+                               </td>
+                                <td>
+                                   2BHK
+                               </td>
+                               <td>
+                                   4BHK
+                               </td>
+
+                           </tr>
+
+                            <tr style="background-color:green;">
+
+                                <td colspan="2">Area of SFT</td>
+                               <td>
+                                   3500
+                               </td>
+                               <td>
+                                   3456
+                               </td>
+                                <td>
+                                   3670
+                               </td>
+                               <td>
+                                   3980
+                               </td>
+
+                           </tr>
+
+                           <t t-foreach="range(1,24)" t-as = 'i'>
+
+                               <t t-if = "i==9">
+                                   <tr style="background-color:#7b7b7b;">
+                                    <td colspan="2">Sale Consideration</td>
+
+                               <td>hi</td>
+                               <td>hi</td>
+                               <td>hi</td>
+                               <td>hi</td>
+                                   </tr>
+
+                                   </t>
+
+                               <t t-elif = "i==14">
+                                   <tr style="background-color:#9c9e95;">
+
+                                    <td colspan="6">Notes</td>
+</tr>
+
+                                   </t>
+
+
+
+                               <t t-elif = "i==18">
+                                   <tr>
+                                    <td rowspan="4" colspan="2">title</td>
+                                    <td colspan="4">Description</td>
+
+                                   </tr>
+                                   </t>
+
+                                <t t-elif = "i>14 and i&lt;18">
+                                    <tr>
+                                    <td colspan="2">title</td>
+                                    <td colspan="4">Description</td>
+                           </tr>
+                                   </t>
+
+                                 <t t-elif = "i>18 and i&lt;22">
+                                    <tr>
+
+                                    <td colspan="4">Description</td>
+                           </tr>
+                                   </t>
+
+                               <t t-elif = "i>=22">
+                                    <tr>
+                                    <td colspan="2">title</td>
+                                    <td colspan="4">Description</td>
+                           </tr>
+                                   </t>
+
+
+
+
+
+                          <t t-else="">
+                           <tr>
+                               <td width="4px"><t t-out="i"/></td>
+                               <td>hi</td>
+                               <td>hi</td>
+                               <td>hi</td>
+                               <td>hi</td>
+                               <td>hi</td>
+                           </tr>
+                             </t>
+                       </t>
+
+                       </thead>
+
+
+
+
+
+                   </table>
+
+
+
+
+
+
+
+<!--                    <table border="1" style="width: 100%; margin-top: 20px;border:1pt solid black;">-->
+<!--                        <thead>-->
+<!--                            <tr border="1" style="background-color: #2ecc71; color: #ffffff;">-->
+<!--                                <th>Subject</th>-->
+<!--                                <th>Marks</th>-->
+<!--                            </tr>-->
+<!--                        </thead>-->
+<!--                        <tbody>-->
+<!--                            <tr>-->
+<!--                                <td>Telugu</td>-->
+<!--                                <td><span t-field="o.telugu"/></td>-->
+<!--                            </tr>-->
+<!--                            <tr>-->
+<!--                                <td>Hindi</td>-->
+<!--                                <td><span t-field="o.hindi"/></td>-->
+<!--                            </tr>-->
+<!--                            <tr>-->
+<!--                                <td>English</td>-->
+<!--                                <td><span t-field="o.english"/></td>-->
+<!--                            </tr>-->
+<!--                            <tr>-->
+<!--                                <td>Mathematics</td>-->
+<!--                                <td><span t-field="o.maths"/></td>-->
+<!--                            </tr>-->
+<!--                            <tr>-->
+<!--                                <td>Science</td>-->
+<!--                                <td><span t-field="o.science"/></td>-->
+<!--                            </tr>-->
+<!--                            <tr>-->
+<!--                                <td>Social</td>-->
+<!--                                <td><span t-field="o.social"/></td>-->
+<!--                            </tr>-->
+<!--                        </tbody>-->
+<!--                    </table>-->
+
+                    <!-- Total Marks Section -->
+<!--                    <div style="margin-top: 20px; font-weight: bold;">-->
+<!--                        <p>Total Marks: <span t-field="o.total"/></p>-->
+<!--                    </div>-->
+                </div>
+            </t>
+        </t>
+    </t>
+</template>
+
+</odoo>

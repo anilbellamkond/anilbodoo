@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+<data>
+    <record id="action_student_module" model="ir.actions.act_window">
+        <field name="name">Students</field>
+        <field name="res_model">student.model</field>
+        <field name="view_mode">tree,form,activity</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a first students.....
+            </p>
+        </field>
+    </record>
+
+
+
+    <record id="student_module_form_view" model="ir.ui.view">
+        <field name="name">student.module.form.view</field>
+        <field name="model">student.model</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="roll_no"/>
+                            <field name="name" string="Student Name"/>
+                            <field name="class_name"/>
+                            <field name="class_teacher"/>
+                        </group>
+                        <group>
+                             <field name="father_name"/>
+                             <field name="phone"/>
+                             <field name="address"/>
+                            <field name="photo" />
+                              <button  onClick="onDownloadButtonClick" string="Download"  class="oe_highlight"/>
+                        </group>
+
+
+                    </group>
+                    <notebook>
+                        <page string="Mark sheet">
+                            <field name="student" >
+                                <tree editable="bottom">
+                                    <field name="stu" invisible="1"/>
+                                    <field name="type"/>
+                                    <field name="telugu" string="Telugu"/>
+                                    <field name="hindi" string="Hindi"/>
+                                    <field name="english" string="English"/>
+                                    <field name="maths" string="Mathematics"/>
+                                    <field name="science" string="Science"/>
+                                    <field name="social" string="Social"/>
+
+                                    <field name="total"/>
+
+                                    <button name="print_marks" string="Download" type="object"  class="oe_highlight"/>
+
+
+                                </tree>
+                            </field>
+
+                        </page>
+                        <page string="Admission">
+
+                     </page>
+
+
+                            <page string="Fee Details">
+
+
+</page>
+
+
+                 </notebook>
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+
+
+
+    <record id="student_module_tree_view" model="ir.ui.view" >
+        <field name="name">student.module.tree.view</field>
+        <field name="model">student.model</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="roll_no" string="Roll Number"/>
+                <field name="name" string="Student Name"/>
+                            <field name="class_name"/>
+                            <field name="class_teacher"/>
+
+                   <field name="father_name"/>
+                             <field name="phone"/>
+                             <field name="address"/>
+
+
+            </tree>
+        </field>
+
+    </record>
+
+    
+
+
+
+
+   <record id="seq_student_model" model="ir.sequence">
+       <field name="name">student model</field>
+       <field name="code">student.model</field>
+       <field name="prefix">MONT</field>
+       <field name="padding">3</field>
+       <field name="company_id" eval="False"/>
+   </record>
+
+
+    <menuitem id="school_student_child_menu"
+              name="Students"
+                parent="school_student_menu"
+              action="action_student_module"
+              sequence="0"/>
+
+    </data>
+
+</odoo>

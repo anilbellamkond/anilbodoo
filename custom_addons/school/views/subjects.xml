@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+
+
+
+
+
+    <record id="subjects_module_form_view" model="ir.ui.view">
+        <field name="name">subjects.module.form.view</field>
+        <field name="model">subjects.module</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                <group>
+                     <field name="name"/>
+                </group>
+            </sheet>
+
+            </form>
+        </field>
+    </record>
+
+
+    <record id="subjects_module_tree_view" model="ir.ui.view" >
+        <field name="name">subjects.module.tree.view</field>
+        <field name="model">subjects.module</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+
+            </tree>
+        </field>
+
+    </record>
+
+      <record id="actions_subjects_module" model="ir.actions.act_window">
+        <field name="name">Subjects</field>
+        <field name="res_model">subjects.module</field>
+        <field name="view_mode">tree,form,activity</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a first students.....
+            </p>
+        </field>
+    </record>
+
+        <menuitem id="school_subject_child_menu"
+              name="Subjects"
+              parent="school_config_child_menu"
+              action="actions_subjects_module"
+              sequence="2"/>
+
+
+</odoo>

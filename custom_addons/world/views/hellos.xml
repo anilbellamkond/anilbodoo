@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+<menuitem
+            id="world_demo"
+            name="Hospital"
+            sequence="0"
+
+            />
+
+    <menuitem
+            id="world_demo_second"
+            name="Patient"
+            parent="world_demo"
+            sequence="0"
+            />
+
+</odoo>
+

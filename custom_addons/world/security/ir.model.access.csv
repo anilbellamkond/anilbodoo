@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hello_world,Hello World Access,model_hello_world,base.group_user,1,1,1,1
+access_hello_appointment,Hello Appointment Access,model_hello_appointment,base.group_user,1,1,1,1
+access_patient_status,Patient Status Access,model_patient_status,base.group_user,1,1,1,1
+access_patient_tags,Patient Tags Access,model_patient_tags,base.group_user,1,1,1,1
+access_cancel_appointment,Cancel Appointment Access,model_cancel_appointment,base.group_user,1,1,1,1
+
+

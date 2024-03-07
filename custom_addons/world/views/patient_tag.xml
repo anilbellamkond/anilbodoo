@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record model="ir.actions.act_window" id="action_hello_tags">
+        <field name="name">Patient Tags</field>
+        <field name="res_model">patient.tags</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create Your account</p>
+        </field>
+    </record>
+
+    <record id="patient_tag_view" model = "ir.ui.view">
+        <field name="name">Patient Tags</field>
+        <field name="model">patient.tags</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="active" widget="boolean_toggle"/>
+                        <field name="color" widget="color_picker"/>
+                        <field name="color_2" widget="color"/>
+
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_patient_tags_form" model = "ir.ui.view">
+        <field name="name">view.patient.status.form</field>
+        <field name="model">patient.tags</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="active" widget="boolean_toggle"/>
+                        <field name="color" widget="color_picker"/>
+                        <field name="color_2" widget="color"/>
+
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+     <record id="view_patient_status_tree" model = "ir.ui.view">
+        <field name="name">view.patient.status.tree</field>
+        <field name="model">patient.tags</field>
+        <field name="arch" type="xml">
+            <tree>
+
+                        <field name="name" />
+                        <field name="active" widget="boolean_toggle"/>
+                        <field name="color" widget="color_picker"/>
+                        <field name="color_2" widget="color"/>
+
+
+            </tree>
+        </field>
+    </record>
+
+
+     <menuitem
+            id="patienttag"
+            name="Patient Tags"
+            parent="world_demo"
+            action="action_hello_tags"
+
+            />
+
+
+</odoo>

@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+
+    <record id="view_hello_world_tree" model="ir.ui.view">
+        <field name="name">view.hello.world.tree</field>
+        <field name="model">hello.world</field>
+        <field name="arch" type="xml">
+            <tree>
+
+                <field name="name"/>
+                <field name="age"/>
+                <field name="gender"/>
+                <field name="status"/>
+
+                 <field name="is_checked"/>
+                 <field name="image" />
+                 <field name="document"/>
+                <field name="tag_ids"  widget="many2many_tags" options="{'color_field':'color'}"/>
+            </tree>
+
+        </field>
+    </record>
+
+    <record id="view_hello_world_search" model="ir.ui.view">
+        <field name="name">view.hello.world.search</field>
+        <field name="model">hello.world</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" string="name" filter_domain="['|', ('name','ilike',self),]" />
+                <field name="age"/>
+                <field name="gender"/>
+                <filter name="female" string="female" domain="[('gender','=','female')]" />
+
+                <filter name="male" string="male" domain="[('gender','=','male')]" />
+                <separator/>
+                <filter name="filter kids" string="kids" domain="[('age','&lt;=',5)]"/>
+                <filter name="archived" string="archived" domain="[('active','=',False)]" />
+                <group expand="0" string="Group By">
+                    <filter string="Gender" name="group_by_gender" context="{'group_by':'gender'}" />
+
+                </group>
+
+            </search>
+
+        </field>
+    </record>
+
+
+
+
+    <record id="view_hello_world_form" model="ir.ui.view">
+        <field name="name">view.hello.world.form</field>
+        <field name="model">hello.world</field>
+        <field name="arch" type="xml">
+
+            <form>
+                <header>
+                       <button name="search_data" class="oe_highlight" type="object" string="SEARCH"/>
+                       <button name="filter_data" class="oe_highlight" type="object" string="filter"/>
+                    <button name="update_data" class="oe_highlight" type="object" string="update"/>
+                    <button name="create_data" class="oe_highlight" type="object" string="create"/>
+                    <button name="browse_data" class="oe_highlight" type="object" string="browse"/>
+                    <button name="delete_data" class="oe_highlight" type="object" string="delete"/>
+
+                   </header>
+
+
+
+
+
+                <sheet>
+                                <field string ="image" name="image" widget="image" class="oe_inline"/>
+                    <h1 style="color:red;">Fill the Form</h1>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="age"/>
+<!--                            <field name="email"/>-->
+<!--                            <field name="password"/>-->
+                        </group>
+                        <group>
+                            <field name="ref"/>
+                            <label for="gender" string="Gender"/>
+                    <div class="oe_inline">
+                        <field name="gender" widget="radio" class="oe_inline" options="{'horizontal': true}"/>
+                    </div>
+                            <field name="is_checked"/>
+                            <field name="status"/>
+                             <field name="active" readonly="False"/>
+                    <field name="document" widget="attachment"/>
+                               <field name="tag_ids"  widget="many2many_tags"  options="{'color_field':'color'}"/>
+
+                        </group>
+
+                    </group>
+
+                </sheet>
+                 <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids" options="{'post_refresh': 'recipients'}"/>
+                    </div>
+
+            </form>
+
+        </field>
+    </record>
+
+<record model="ir.actions.act_window" id="action_hello_world">
+        <field name="name">Hello world</field>
+        <field name="res_model">hello.world</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create Your account</p>
+        </field>
+    </record>
+
+    <record id="action_set_update" model="ir.actions.server">
+        <field name="name">set Update</field>
+        <field name="model_id" ref="model_hello_world"/>
+        <field name="state">code</field>
+        <field name="binding_model_id" ref="model_hello_world"/>
+        <field name="code">
+            for record in records:
+                record.action_done()
+        </field>
+    </record>
+
+    <template id="report_hello_world_card">
+    <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="o">
+
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <h3 class="text-center">ANIL BELLAMKONDA</h3>
+                        <table class="table table-bordered mt32">
+                            <thead>
+                                <tr>
+                                    <th class="text-center"><span>Name</span></th>
+                                    <th class="text-center"><span>Age</span></th>
+                                    <th class="text-center"><span>Gender</span></th>
+                                    <th class="text-center"><span>Checked</span></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="text-center">
+                                    <td><span t-field="o.name"/></td>
+                                    <td><span t-field="o.age"/></td>
+                                    <td><span t-field="o.gender"/></td>
+                                    <td><span t-field="o.is_checked"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                </div>
+            </t>
+        </t>
+    </t>
+
+</template>
+
+    <record id="action_hello_world_report" model="ir.actions.report">
+        <field name="name">Hello world</field>
+        <field name="model">hello.world</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">world.report_hello_world_card</field>
+        <field name="report_file">world.report_hello_world_card</field>
+         <field name="print_report_name">'Hello world - %s' % (object.name)</field>
+        <field name="binding_model_id" ref="model_hello_world"/>
+    </record>
+
+
+
+<record model="ir.actions.act_window" id="actions_hello_world">
+    <field name="name">Hello world</field>
+    <field name="res_model">hello.world</field>
+    <field name="view_mode">tree,form</field>
+    <field name="domain">[('user_id', '=', uid)]</field>
+    <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">Create Your account</p>
+    </field>
+</record>
+
+
+
+
+
+
+
+
+
+    <menuitem
+            id="world_demo_third"
+            name="Patient data"
+            parent="world_demo_second"
+            action="action_hello_world"
+            sequence="0"
+    />
+
+</odoo>
+
